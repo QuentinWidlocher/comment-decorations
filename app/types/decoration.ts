@@ -1,9 +1,9 @@
 export interface Decoration {
   name: string;
   titleTemplate: string;
+  footerTemplate?: string;
   beforeContent?: string;
   afterContent?: string;
-  filler: string;
 }
 
 export type Language = "java" | "html" | "python";
@@ -32,13 +32,59 @@ export function printDecoration(
     }
   }
 
-  result +=
-    "\n" +
-    decoration.filler.repeat(
-      displayedTitle.length / Math.max(decoration.filler.length, 1)
-    );
+  if (decoration.footerTemplate) {
+    result += "\n" + decoration.footerTemplate;
+  }
 
-  return addCommentCharacters(result, lang);
+  // We retrieve the max line length, excluding the fillers
+  let maxLineLength = result
+    .replace(/\$FILL\(([^)]+)\)/g, "")
+    .split("\n")
+    .reduce((max, line) => {
+      return Math.max(max, line.length);
+    }, 0);
+
+  console.log(maxLineLength);
+
+  let filledResult = "";
+  let lineIndex = 0;
+  for (let line of result.split("\n")) {
+    let firstOrLastLine =
+      lineIndex === 0 || lineIndex === result.split("\n").length - 1;
+
+    let howManyFills = line.match(/\$FILL\(([^()]|)*\)/g)?.length ?? 1;
+
+    filledResult += line.replace(/\$FILL\(([^)]+)\)/g, (match, filler) => {
+      if (!firstOrLastLine && decoration.afterContent) {
+        console.log(`${lineIndex} ${line}`);
+        console.log(`${filler} ${decoration.afterContent}`);
+
+        let repeatSize = Math.max(
+          Math.round(
+            (maxLineLength - line.replace(/\$FILL\(([^)]+)\)/g, "").length) /
+              howManyFills /
+              filler.length
+          ),
+          0
+        );
+
+        console.log(`repeatSize: ${repeatSize}`);
+        return filler.repeat(repeatSize);
+      } else {
+        let repeatSize = Math.round(
+          (maxLineLength - line.replace(/\$FILL\(([^)]+)\)/g, "").length) /
+            howManyFills /
+            filler.length
+        );
+        return filler.repeat(repeatSize);
+      }
+    });
+    filledResult += "\n";
+    lineIndex++;
+    console.debug("filledResult", "\n" + filledResult);
+  }
+
+  return addCommentCharacters(filledResult, lang);
 }
 
 export function addCommentCharacters(comment: string, commentType: Language) {
@@ -46,10 +92,16 @@ export function addCommentCharacters(comment: string, commentType: Language) {
   switch (commentType) {
     case "java":
       result = "/*";
+      let lineIndex = 0;
       for (let line of comment.split("\n")) {
-        result += "\n * " + line;
+        if (lineIndex < comment.split("\n").length - 1) {
+          result += "\n * " + line;
+        } else {
+          result += " \n */";
+        }
+        lineIndex++;
       }
-      result += "\n */";
+
       break;
 
     case "html":
