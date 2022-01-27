@@ -1,0 +1,71 @@
+Arguments: 
+  /home/quentin/.nvm/versions/node/v12.20.0/bin/node /home/quentin/.nvm/versions/node/v12.20.0/bin/yarn init
+
+PATH: 
+  /home/quentin/.local/bin:/home/quentin/bin:/home/quentin/.nvm/versions/node/v12.20.0/bin:/home/quentin/bin:/home/quentin/erudo/git/Erudo-development-platform/utils:/home/quentin/erudo/git/Erudo-development-platform/sonar:/home/quentin/erudo/git/Erudo-development-platform/maven:/home/quentin/erudo/git/Erudo-development-platform/izos:/home/quentin/erudo/git/Erudo-development-platform/git:/home/quentin/erudo/git/Erudo-development-platform/elasticsearch:/home/quentin/erudo/git/Erudo-development-platform/database:/home/quentin/erudo/git/Erudo-development-platform/:/home/quentin/.cargo/bin:/home/quentin/.local/bin:/home/quentin/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/quentin/.dotnet/tools:/home/quentin/.dotnet/tools:/home/quentin/Documents/Perso/Pico8/:/media/quentin/Data/Perso/Android/SDK/emulator:/media/quentin/Data/Perso/Android/SDK/tools:/media/quentin/Data/Perso/Android/SDK/tools/bin:/media/quentin/Data/Perso/Android/SDK/platform-tools
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  12.20.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: canceled
+      at Interface.<anonymous> (/home/quentin/.nvm/versions/node/v12.20.0/lib/node_modules/yarn/lib/cli.js:137023:13)
+      at Interface.emit (events.js:314:20)
+      at Interface._ttyWrite (readline.js:868:16)
+      at ReadStream.onkeypress (readline.js:205:10)
+      at ReadStream.emit (events.js:314:20)
+      at emitKeys (internal/readline/utils.js:335:14)
+      at emitKeys.next (<anonymous>)
+      at ReadStream.onData (readline.js:1137:36)
+      at ReadStream.emit (events.js:314:20)
+      at addChunk (_stream_readable.js:297:12)
+
+npm manifest: 
+  {
+    "private": true,
+    "name": "remix-app-template",
+    "description": "",
+    "license": "",
+    "scripts": {
+      "build": "remix build",
+      "dev": "remix watch",
+      "postinstall": "remix setup cloudflare-workers",
+      "build:worker": "esbuild --define:process.env.NODE_ENV='\"production\"' --minify --bundle --sourcemap --outdir=dist ./worker",
+      "dev:worker": "esbuild --define:process.env.NODE_ENV='\"development\"' --bundle --sourcemap --outdir=dist ./worker",
+      "start": "miniflare --build-command \"npm run dev:worker\" --watch",
+      "deploy": "npm run build && wrangler publish"
+    },
+    "dependencies": {
+      "@remix-run/react": "^1.1.3",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "remix": "^1.1.3",
+      "@remix-run/cloudflare-workers": "^1.1.3"
+    },
+    "devDependencies": {
+      "@remix-run/dev": "^1.1.3",
+      "@types/react": "^17.0.24",
+      "@types/react-dom": "^17.0.9",
+      "typescript": "^4.1.2",
+      "@cloudflare/workers-types": "^2.2.2",
+      "esbuild": "0.13.14",
+      "miniflare": "2.0.0-next.3"
+    },
+    "engines": {
+      "node": ">=14"
+    },
+    "sideEffects": false,
+    "main": "dist/worker.js"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
