@@ -12,7 +12,7 @@ export default function CommentPreview({ comment, name }: CommentPreviewProps) {
 
   return (
     <section
-      className="card w-100"
+      className="card w-100 z-10"
       onClick={copy}
       style={{ cursor: "pointer" }}
     >

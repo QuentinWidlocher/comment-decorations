@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .card {
-  @apply bg-[#282c34] text-gray-400  p-3 rounded-xl shadow shadow-blue-500/20;
+  @apply bg-[#282c34] text-gray-400 p-3 rounded-xl shadow shadow-black/30;
   @apply hover:bg-blue-900 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/50;
   @apply transition-all transform hover:scale-110 active:scale-105;
 }
