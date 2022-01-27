@@ -15,7 +15,7 @@ export let loader: LoaderFunction = async ({ request }) => {
 
   let deco = decorationName
     ? decorations.filter((d) => d.name === decorationName)
-    : decorations;
+    : decorations.filter((d) => d.name != "Dev");
 
   let comments = deco.map((decoration) => ({
     name: decoration.name,

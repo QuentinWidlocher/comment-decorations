@@ -91,4 +91,8 @@ export const decorations: Decoration[] = [
     afterContent: "$FILL( )",
     footerTemplate: "$FILL(☆ﾟ.*･｡ﾟ)",
   },
+  {
+    name: "Dev",
+    titleTemplate: "$TITLE",
+  },
 ];
