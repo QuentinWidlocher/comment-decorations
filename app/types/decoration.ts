@@ -6,10 +6,13 @@ export interface Decoration {
   filler: string;
 }
 
+export type Language = "java" | "html" | "python";
+
 export function printDecoration(
   decoration: Decoration,
   title: string,
-  content: string[]
+  content: string[],
+  lang: Language
 ): string {
   let displayedTitle = decoration.titleTemplate.replace("$TITLE", title);
 
@@ -35,18 +38,40 @@ export function printDecoration(
       displayedTitle.length / Math.max(decoration.filler.length, 1)
     );
 
-  return addCommentCharacters(result, "java");
+  return addCommentCharacters(result, lang);
 }
 
-export function addCommentCharacters(comment: string, commentType: "java") {
-  if (commentType === "java") {
-    let result = "/*";
-    for (let line of comment.split("\n")) {
-      result += "\n * " + line;
-    }
-    result += "\n */";
-    return result;
-  } else {
-    return comment;
+export function addCommentCharacters(comment: string, commentType: Language) {
+  let result = "";
+  switch (commentType) {
+    case "java":
+      result = "/*";
+      for (let line of comment.split("\n")) {
+        result += "\n * " + line;
+      }
+      result += "\n */";
+      break;
+
+    case "html":
+      for (let line of comment.split("\n")) {
+        if (line) {
+          result += "<!-- " + line + " -->\n";
+        }
+      }
+      break;
+
+    case "python":
+      for (let line of comment.split("\n")) {
+        if (line) {
+          result += "# " + line + "\n";
+        }
+      }
+      break;
+
+    default:
+      result = comment;
+      break;
   }
+
+  return result;
 }

@@ -31,4 +31,10 @@ export const decorations: Decoration[] = [
     beforeContent: "",
     filler: "",
   },
+  {
+    name: "Magical",
+    titleTemplate: "━☆ﾟ.*･｡ﾟ $TITLE ﾟ｡･*.ﾟ☆━",
+    beforeContent: "✿ ",
+    filler: "☆ﾟ.*･｡ﾟ",
+  },
 ];

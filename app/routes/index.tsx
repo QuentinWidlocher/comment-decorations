@@ -6,14 +6,18 @@ import { Decoration, printDecoration } from "~/types/decoration";
 export let loader: LoaderFunction = async ({ request }) => {
   let url = new URL(request.url);
 
-  let title = url.searchParams.get("title")?.toString() || "Lorem Ipsum";
-  let content =
-    url.searchParams.get("content")?.toString() ||
-    "Lorem\nIpsum\nDolor\nSit\nAmet";
+  let title = url.searchParams.get("title")?.toString() || "";
+  let content = url.searchParams.get("content")?.toString() || "";
+  let language = url.searchParams.get("lang")?.toString() || "java";
+  let decorationName = url.searchParams.get("decoration")?.toString();
 
-  let comments = decorations.map((decoration) => ({
+  let deco = decorationName
+    ? decorations.filter((d) => d.name === decorationName)
+    : decorations;
+
+  let comments = deco.map((decoration) => ({
     name: decoration.name,
-    comment: printDecoration(decoration, title, content.split("\n")),
+    comment: printDecoration(decoration, title, content.split("\n"), language),
   }));
 
   return comments;
@@ -32,8 +36,16 @@ export default function Index() {
         <label htmlFor="title">Title</label>
         <input type="text" name="title" id="title" />
 
+        <label htmlFor="lang">Language</label>
+        <select name="lang" id="lang">
+          <option value="java">Java</option>
+          <option value="html">HTML</option>
+          <option value="python">Python</option>
+        </select>
+
         <label htmlFor="content">Content</label>
         <textarea name="content" id="content" rows={10}></textarea>
+
         <button type="submit">Submit</button>
       </Form>
       <hr />
