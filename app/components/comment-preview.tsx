@@ -11,8 +11,8 @@ export default function CommentPreview({ comment, name }: CommentPreviewProps) {
   }
 
   return (
-    <section onClick={copy} style={{ cursor: "pointer" }}>
-      <h2>{name}</h2>
+    <section className="card" onClick={copy} style={{ cursor: "pointer" }}>
+      <h2 className="text-white text-xl font-bold mb-3">{name}</h2>
       <pre>{comment}</pre>
     </section>
   );

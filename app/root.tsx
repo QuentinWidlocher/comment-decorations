@@ -1,15 +1,21 @@
 import {
   Links,
+  LinksFunction,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
 } from "remix";
 import type { MetaFunction } from "remix";
+import globalStylesUrl from "~/styles/global.css";
 
 export const meta: MetaFunction = () => {
   return { title: "New Remix App" };
+};
+
+export let links: LinksFunction = () => {
+  return [{ rel: "stylesheet", href: globalStylesUrl }];
 };
 
 export default function App() {
