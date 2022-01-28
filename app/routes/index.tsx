@@ -29,18 +29,18 @@ export default function Index() {
   let comments = useLoaderData<{ name: string; comment: string }[]>();
 
   return (
-    <main className="w-screen h-screen md:grid grid-cols-[1fr_4fr] grid-rows-1">
-      <section className="p-5 flex flex-col">
-        <h1 className="text-2xl mx-auto hover:underline underline-offset-2">
+    <main className="h-screen w-screen grid-cols-[1fr_4fr] grid-rows-1 md:grid">
+      <section className="flex flex-col p-5">
+        <h1 className="mx-auto text-2xl underline-offset-2 hover:underline">
           <a href="/">Comment Decorations</a>
         </h1>
         <h2 className="mx-auto opacity-50">Click to copy !</h2>
-        <hr className="opacity-60 my-5" />
-        <Form className="flex flex-col space-y-5 mx-auto mb-5 w-80">
+        <hr className="my-5 opacity-60" />
+        <Form className="mx-auto mb-5 flex w-80 flex-col space-y-5">
           <div className="flex flex-col">
             <label htmlFor="title">Title</label>
             <input
-              className="border rounded px-2 py-1"
+              className="rounded border px-2 py-1"
               type="text"
               name="title"
               id="title"
@@ -49,7 +49,7 @@ export default function Index() {
 
           <div className="flex flex-col">
             <label htmlFor="lang">Comment type</label>
-            <select className="border rounded px-2 py-1" name="lang" id="lang">
+            <select className="rounded border px-2 py-1" name="lang" id="lang">
               <option value="plain">Plain text</option>
               <option value="java">Java</option>
               <option value="html">HTML</option>
@@ -60,7 +60,7 @@ export default function Index() {
           <div className="flex flex-col">
             <label htmlFor="content">Content</label>
             <textarea
-              className="border rounded px-2 py-1 flex-1"
+              className="flex-1 rounded border px-2 py-1"
               name="content"
               id="content"
               rows={10}
@@ -68,7 +68,7 @@ export default function Index() {
           </div>
 
           <button
-            className="bg-blue-500 text-white rounded hover:text-blue-50 hover:bg-blue-600 shadow shadow-blue-500/50 active:transform active:translate-y-px border border-transparent px-2 py-1"
+            className="rounded border border-transparent bg-blue-500 px-2 py-1 text-white shadow shadow-blue-500/50 hover:bg-blue-600 hover:text-blue-50 active:translate-y-px active:transform"
             type="submit"
           >
             Submit
@@ -76,13 +76,13 @@ export default function Index() {
         </Form>
         <div className="mt-auto flex justify-around">
           <a
-            className="hover:underline underline-offset-2"
+            className="underline-offset-2 hover:underline"
             href="https://quentin.widlocher.com"
           >
             Quentin Widlocher
           </a>
           <a
-            className="hover:underline underline-offset-2"
+            className="underline-offset-2 hover:underline"
             href="https://github.com/QuentinWidlocher/comment-decorations"
           >
             See on Github
@@ -92,7 +92,7 @@ export default function Index() {
       <section className="overflow-y-auto p-5">
         <div className="flex flex-wrap items-stretch">
           {comments.map(({ name, comment }) => (
-            <div className="flex-1 p-3">
+            <div className="w-full p-5 lg:w-1/2 xl:w-1/3">
               <CommentPreview key={name} name={name} comment={comment} />
             </div>
           ))}

@@ -11,12 +11,8 @@ export default function CommentPreview({ comment, name }: CommentPreviewProps) {
   }
 
   return (
-    <section
-      className="card w-100 z-10"
-      onClick={copy}
-      style={{ cursor: "pointer" }}
-    >
-      <h2 className="text-white text-xl font-bold mb-3">{name}</h2>
+    <section className="card" onClick={copy}>
+      <h2 className="mb-3 text-xl font-bold text-white">{name}</h2>
       <pre className="w-100 overflow-x-auto">{comment}</pre>
     </section>
   );

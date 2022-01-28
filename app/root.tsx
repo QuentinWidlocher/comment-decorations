@@ -11,7 +11,7 @@ import type { MetaFunction } from "remix";
 import globalStylesUrl from "~/styles/global.css";
 
 export const meta: MetaFunction = () => {
-  return { title: "New Remix App" };
+  return { title: "Comment decorations" };
 };
 
 export let links: LinksFunction = () => {
