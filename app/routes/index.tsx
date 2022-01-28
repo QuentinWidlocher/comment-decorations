@@ -29,7 +29,7 @@ export default function Index() {
   let comments = useLoaderData<{ name: string; comment: string }[]>();
 
   return (
-    <main className="h-screen w-screen grid-cols-[1fr_4fr] grid-rows-1 md:grid">
+    <main className="h-screen w-screen grid-cols-[1fr_4fr] grid-rows-1 dark:text-white md:grid">
       <section className="flex flex-col p-5">
         <h1 className="mx-auto text-2xl underline-offset-2 hover:underline">
           <a href="/">Comment Decorations</a>
@@ -40,7 +40,7 @@ export default function Index() {
           <div className="flex flex-col">
             <label htmlFor="title">Title</label>
             <input
-              className="rounded border px-2 py-1"
+              className="rounded border border-gray-300 px-2 py-1 focus:border-blue-500 focus:shadow focus:shadow-blue-500/50 dark:border-gray-700 dark:bg-black/25 dark:text-white"
               type="text"
               name="title"
               id="title"
@@ -49,7 +49,11 @@ export default function Index() {
 
           <div className="flex flex-col">
             <label htmlFor="lang">Comment type</label>
-            <select className="rounded border px-2 py-1" name="lang" id="lang">
+            <select
+              className="rounded border border-gray-300 px-2 py-1 focus:border-blue-500 focus:shadow focus:shadow-blue-500/50 dark:border-gray-700 dark:bg-black/25 dark:text-white"
+              name="lang"
+              id="lang"
+            >
               <option value="plain">Plain text</option>
               <option value="java">Java</option>
               <option value="html">HTML</option>
@@ -60,7 +64,7 @@ export default function Index() {
           <div className="flex flex-col">
             <label htmlFor="content">Content</label>
             <textarea
-              className="flex-1 rounded border px-2 py-1"
+              className="flex-1 rounded border border-gray-300 px-2 py-1 focus:border-blue-500 focus:shadow focus:shadow-blue-500/50 dark:border-gray-700 dark:bg-black/25 dark:text-white"
               name="content"
               id="content"
               rows={10}

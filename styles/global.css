@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .card {
-  @apply cursor-pointer rounded-xl bg-[#282c34] p-3 text-gray-400 shadow shadow-black/30;
-  @apply hover:bg-blue-900 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/50;
+  @apply cursor-pointer rounded-xl bg-gray-800 p-3 text-gray-400 shadow shadow-black/30 dark:bg-gray-900;
+  @apply hover:bg-blue-900 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/50 dark:hover:shadow-blue-800/40;
   @apply transform transition-all hover:scale-110 active:scale-105;
 }
