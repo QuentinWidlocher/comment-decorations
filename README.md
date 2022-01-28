@@ -1,34 +1,33 @@
-# Welcome to Remix!
+# Comment decorations
 
-- [Remix Docs](https://remix.run/docs)
+:sparkles: Wrap you comments in beautiful blocks :sparkles:
 
-## Development
-
-You will be running two processes during development:
-
-- The Miniflare server (miniflare is a local environment for Cloudflare Workers)
-- The Remix development server
-
-```sh
-# in one tab, start the remix dev server
-$ npm run dev
-
-# in another, start the miniflare server
-$ npm start
+```
+╭───────────── Pretty simple ─────────────╮
+│ Just put you comment inside the field.  │
+│ Press "Submit"                          │
+│ And choose your favorite style          │
+╰─────────────────────────────────────────╯
 ```
 
-Open up [http://127.0.0.1:8787](http://127.0.0.1:8787) and you should be ready to go!
+```java
+/*
+ *  .............. Java .............. 
+ * : You can also change the language :
+ *  ..................................  
+ */
+```
 
-If you'd rather run everything in a single tab, you can look at [concurrently](https://npm.im/concurrently) or similar tools to run both processes in one tab.
+```html
+<!-- ╔═════════════════════════════════════════════════════════════════════ HTML ════════════════════════════════════════════════════════════════════╗ -->
+<!-- ║ And you can also share a link to your favorite comment block !                                                                                ║ -->
+<!-- ║ https://comment-decorations.lazard.workers.dev/?title=HTML&lang=html&content=And+you+can+also+share+a+link+to+your+favorite+comment+block+%21 ║ -->
+<!-- ╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝ -->
+```
 
-## Deployment
-
-Use [wrangler](https://developers.cloudflare.com/workers/cli-wrangler) to build and deploy your application to Cloudflare Workers. If you don't have it yet, follow [the installation guide](https://developers.cloudflare.com/workers/cli-wrangler/install-update) to get it setup. Be sure to [authenticate the CLI](https://developers.cloudflare.com/workers/cli-wrangler/authentication) as well.
-
-If you don't already have an account, then [create a cloudflare account here](https://dash.cloudflare.com/sign-up) and after verifying your email address with Cloudflare, go to your dashboard and set up your free custom Cloudflare Workers subdomain.
-
-Once that's done, you should be able to deploy your app:
-
-```sh
-npm run deploy
+```python
+# ☆ﾟ.*･｡ﾟ☆ﾟ.*･｡ﾟ Python ☆ﾟ.*･｡ﾟ☆ﾟ.*･｡ﾟ.*･｡ﾟ.
+# ✿ Don't hesitate to propose new styles
+# ✿ and new languages in this repo      
+# ☆ﾟ.*･｡ﾟ☆ﾟ.*･｡ﾟ☆ﾟ.*･｡ﾟ☆ﾟ.*･｡ﾟ☆ﾟ.*･｡ﾟ.*･｡ﾟ.*
 ```
